@@ -29,7 +29,7 @@ with open ("file", "wb") as fl:
 
 fl.close()
 
-s.shutdown(socket,SHUT_WR)
+s.shutdown(socket.SHUT_WR)
 
 print("Zero length read.  Closing") 
 s.close()

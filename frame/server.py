@@ -9,7 +9,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 ip = "127.0.0.1"  # every machines has this address
 port = 50001   # port number reserved
-s.bind((listenAddr, listenPort))
+s.bind((ip,port))
 s.listen(1)              # allow only one outstanding request
 
 while True:
