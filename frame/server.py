@@ -6,13 +6,14 @@ import params
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # s is a factory for connected sockets
-
+SIZE_B = 1024  # buffer size to be read
 ip = "127.0.0.1"  # every machines has this address
 port = 50001   # port number reserved
 s.bind((ip,port))
 s.listen(1)              # allow only one outstanding request
 
 while True:
+    print("Attempting to connect...")
     conn, addr = s.accept() # wait until incoming connection request (and accept it)
     print("Connected by ", addr)
     data = conn.recv(SIZE_B).decode() #amount of bytes decoded
@@ -23,8 +24,8 @@ while True:
     op = open(nameFile, "rb")
     re = op.read(SIZE_B)
 
-    while(1):
-        conn.send(1)
+    while(re):
+        conn.send(re)
         print("Sent content ", repr(1))
         re = op.read(SIZE_B)
         break

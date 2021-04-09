@@ -15,12 +15,12 @@ s.connect((host, port))
 s.send("Hello, there!".encode()) # greeting message to server
 
 with open ("file", "wb") as fl:
-    print("File opened successfull")
+    print("File opened successfully")
 
     while True:
         print("Getting data...")
         data = s.recv(SIZE_B)    # we assign received data to object data
-        print("data: %s", (data))
+        print("data: ",  (data))
 
         if not data:           # stop if there is no data
             break
@@ -28,12 +28,12 @@ with open ("file", "wb") as fl:
         break
 
 fl.close()
-
+print("File received successfully!") # signalling of file received
 s.shutdown(socket.SHUT_WR)
 
 print("Zero length read.  Closing") 
-s.close()
-
+s.close()                            # close socket
+print("The connection has been closed") # signalling of closed connection
 '''''
 Notes:
 
